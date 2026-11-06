@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZYRA CATERINGS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+:root {
+  --gold: #c6a45b;
+  --gold-light: #e5cc91;
+  --black: #080808;
+  --white: #f5f0e5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 30px 10px;
+  background: #242424;
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+}
+
+.emoji {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji",
+               "Noto Color Emoji", sans-serif;
+}
+
+.preview-title {
+  text-align: center;
+  color: var(--gold-light);
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin: 0 0 12px;
+}
+
+.card {
+  width: 3.74in;
+  height: 2.24in;
+  max-width: 100%;
+  margin: 0 auto 30px;
+  padding: 0.12in;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--black);
+  color: var(--white);
+  border: 1px solid var(--gold);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: url(
+    "https://drive.google.com/uc?export=view&id=1HSc6ydHEwAWbhS0cB_o4hyZnBfpNxAQj"
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  z-index: 5;
+  border: 1px solid rgba(198,164,91,.8);
+  pointer-events: none;
+}
+
+/* FRONT */
+
+.front {
+  text-align: center;
+}
+
+.logo {
+  width: 49px;
+  height: 49px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 2px;
+}
+
+.brand {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold-light);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.1;
+}
+
+.tagline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 6.5px;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.section-heading {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  color: var(--gold-light);
+  letter-spacing: 2px;
+  margin: 9px 0 6px;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.service {
+  min-height: 26px;
+  border: 1px solid var(--gold);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 3px;
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 6.8px;
+  font-weight: 600;
+  letter-spacing: .1px;
+  white-space: nowrap;
+}
+
+.service:last-child {
+  grid-column: 1 / 3;
+  color: var(--gold-light);
+}
+
+.founder {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  font-family: 'Cinzel', serif;
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: var(--gold-light);
+}
+
+/* BACK */
+
+.back {
+  padding: 12px 14px;
+}
+
+.back-title {
+  text-align: center;
+  color: var(--gold-light);
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  letter-spacing: 1.5px;
+}
+
+.back-subtitle {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 6px;
+  letter-spacing: 1.5px;
+  margin: 3px 0 8px;
+}
+
+.back-content {
+  display: grid;
+  grid-template-columns: 1fr 78px;
+  gap: 8px;
+  align-items: center;
+}
+
+.details {
+  font-size: 7px;
+  line-height: 1.6;
+}
+
+.detail-heading {
+  color: var(--gold-light);
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  margin: 4px 0 2px;
+}
+
+.contact {
+  color: var(--white);
+  font-size: 7px;
+  line-height: 1.7;
+}
+
+.insta {
+  color: var(--gold-light);
+}
+
+.qr-area {
+  text-align: center;
+}
+
+#qrcode {
+  width: 70px;
+  height: 70px;
+  padding: 4px;
+  background: white;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#qrcode img,
+#qrcode canvas {
+  width: 62px !important;
+  height: 62px !important;
+}
+
+.qr-label {
+  color: var(--gold-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 6px;
+  letter-spacing: 1px;
+  margin-top: 4px;
+}
+
+.booking {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 5px;
+  margin-top: 9px;
+}
+
+.booking-box {
+  min-height: 27px;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--gold-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 6px;
+  font-weight: 700;
+  gap: 3px;
+  padding: 3px;
+}
+
+.location {
+  text-align: center;
+  font-size: 6px;
+  margin-top: 7px;
+}
+
+.website {
+  text-align: center;
+  color: var(--gold-light);
+  font-size: 6px;
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+}
+
+.print-button {
+  display: block;
+  margin: 0 auto 30px;
+  padding: 12px 25px;
+  background: var(--gold);
+  color: #111;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+@media print {
+  @page {
+    size: 3.74in 2.24in;
+    margin: 0;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  .preview-title,
+  .print-button {
+    display: none !important;
+  }
+
+  .card {
+    width: 3.74in;
+    height: 2.24in;
+    max-width: none;
+    margin: 0;
+    border: none;
+    break-after: page;
+    page-break-after: always;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .card:last-of-type {
+    break-after: auto;
+    page-break-after: auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h3 class="preview-title">ZYRA CATERINGS — FRONT SIDE</h3>
+
+<section class="card front">
+
+  <img
+    src="https://drive.google.com/uc?export=view&id=15WuePUMvqIWCBjybtNcNSf7k1l8GoQ1u"
+    class="logo"
+    alt="Zyra Caterings Logo"
+  >
+
+  <div class="brand">ZYRA CATERINGS</div>
+  <div class="tagline">SERVING WITH EXCELLENCE</div>
+
+  <div class="section-heading">OUR SERVICES</div>
+
+  <div class="services">
+    <div class="service">WEDDINGS <span class="emoji">💍</span></div>
+    <div class="service">BUFFET SETUP <span class="emoji">🍲</span></div>
+    <div class="service">CORPORATE EVENTS <span class="emoji">💼</span></div>
+    <div class="service">BIRTHDAY PARTIES <span class="emoji">🎈</span></div>
+    <div class="service">A–Z COMPLETE CATERING SOLUTION <span class="emoji">✨</span></div>
+  </div>
+
+  <div class="founder">FOUNDER SAKTHII</div>
+
+</section>
+
+<h3 class="preview-title">ZYRA CATERINGS — BACK SIDE</h3>
+
+<section class="card back">
+
+  <div class="back-title">ZYRA CATERINGS</div>
+  <div class="back-subtitle">SERVING WITH EXCELLENCE</div>
+
+  <div class="back-content">
+
+    <div class="details">
+
+      <div class="detail-heading">CONTACT</div>
+      <div class="contact">
+        +91 9952625077<br>
+        +91 94424 48409
+      </div>
+
+      <div class="detail-heading">INSTAGRAM</div>
+      <div class="contact insta">@zyra_caterings</div>
+
+      <div class="detail-heading">BOOK YOUR SERVICE</div>
+      <div class="contact">
+        Make your occasions memorable with our serving services.
+      </div>
+
+    </div>
+
+    <div class="qr-area">
+      <div id="qrcode"></div>
+      <div class="qr-label">SCAN TO VISIT</div>
+    </div>
+
+  </div>
+
+  <div class="booking">
+    <div class="booking-box">CALL NOW <span class="emoji">📞</span></div>
+    <div class="booking-box">BOOK NOW <span class="emoji">📅</span></div>
+    <div class="booking-box">SAVE DATE <span class="emoji">🕒</span></div>
+  </div>
+
+  <div class="location">
+    S. Ramachandrapuram, Srivilliputhur, Tamil Nadu.
+  </div>
+
+  <div class="website">
+    sakthizzoffl.github.io/ZYRA-CATERINGS/
+  </div>
+
+</section>
+
+<button class="print-button" onclick="window.print()">
+  PRINT / SAVE AS PDF
+</button>
+
+<script>
+const websiteURL =
+  "https://sakthizzoffl.github.io/ZYRA-CATERINGS/";
+
+new QRCode(document.getElementById("qrcode"), {
+  text: websiteURL,
+  width: 62,
+  height: 62,
+  colorDark: "#000000",
+  colorLight: "#ffffff",
+  correctLevel: QRCode.CorrectLevel.H
+});
+</script>
+
+</body>
+</html>
